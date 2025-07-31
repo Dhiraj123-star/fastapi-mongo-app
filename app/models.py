@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr,Field
+from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 
 class UserIn(BaseModel):
@@ -7,9 +7,13 @@ class UserIn(BaseModel):
     password: str
 
 class UserOut(BaseModel):
-    id: Optional[str] = Field(alias="_id")
+    id: str = Field(..., alias="_id")
     name: str
     email: EmailStr
+
+    model_config = {
+        "populate_by_name": True, 
+    }
 
 class Token(BaseModel):
     access_token: str
