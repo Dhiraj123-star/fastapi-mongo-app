@@ -1,22 +1,23 @@
 
+
 # 🚀 FastAPI Mongo Starter
 
-A minimal FastAPI application powered by **MongoDB**, containerized with **Docker**, secured with **JWT authentication**, and orchestrated using **Docker Compose**.
+A minimal FastAPI application powered by **MongoDB** and **Valkey (Redis-compatible cache)**, secured with **JWT authentication**, containerized with **Docker**, and orchestrated using **Docker Compose**.
 
 ---
 
 ## 🌐 Core Functionality
 
-- ⚡ **User Signup & Login**: Register and authenticate users with email and password.
-- 🔐 **JWT Authentication**: Secure protected routes using access tokens.
-- 🔍 **Get Current User**: Retrieve user details using a valid JWT token.
-- 🧩 **Async I/O**: Fully asynchronous using `motor` (MongoDB async driver).
-- 📦 **Containerized**: FastAPI and MongoDB run in isolated containers.
-- 🔧 **Service Orchestration**: Docker Compose handles setup and networking automatically.
-- 🔐 **Environment Configuration**: Secrets and config loaded securely using `.env` and `python-dotenv`.
+* ⚡ **User Signup & Login**: Register and authenticate users with email and password.
+* 🔐 **JWT Authentication**: Secure protected routes using access tokens.
+* 🔍 **Get Current User**: Retrieve user details using a valid JWT token, with cache fallback using Valkey.
+* 🚀 **Valkey Caching**: Improves performance by caching user data in Valkey (a Redis-compatible cache).
+* 🧩 **Async I/O**: Fully asynchronous using `motor` (MongoDB async driver) and `redis.asyncio` for cache.
+* 📦 **Containerized**: FastAPI, MongoDB, and Valkey run in isolated containers.
+* 🔧 **Service Orchestration**: Docker Compose handles setup, networking, and service orchestration automatically.
+* 🔐 **Environment Configuration**: Secrets and config loaded securely using `.env` and `python-dotenv`.
 
 ---
-
 
 ## 🐳 Run the App
 
@@ -30,7 +31,9 @@ docker-compose up --build
 
 * FastAPI
 * MongoDB
+* Valkey (Redis-compatible cache)
 * Motor (async MongoDB driver)
+* redis-py (async Valkey/Redis client)
 * Python-Jose (JWT)
 * Passlib (bcrypt)
 * Python-Dotenv
