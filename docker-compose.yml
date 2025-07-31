@@ -7,8 +7,11 @@ services:
       - "8000:8000"
     depends_on:
       - mongo
+      - valkey
     environment:
       - MONGO_URI=mongodb://mongo:27017
+      - VALKEY_HOST=valkey
+      - VALKEY_PORT=6379
     volumes:
       - .:/app
     restart: always
@@ -19,6 +22,12 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+    restart: always
+
+  valkey:
+    image: valkey/valkey:latest
+    ports:
+      - "6380:6379"
     restart: always
 
 volumes:
