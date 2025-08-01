@@ -15,6 +15,7 @@ A minimal FastAPI application powered by **MongoDB** and **Valkey (Redis-compati
 * 📦 **Containerized**: FastAPI, MongoDB, and Valkey run in isolated containers.
 * 🔧 **Service Orchestration**: Docker Compose handles setup, networking, and service orchestration automatically.
 * 📡 **NGINX Load Balancer**: Routes and balances traffic across 3 FastAPI instances using round-robin strategy.
+* 🔒 **Self-Signed SSL (HTTPS)**: NGINX serves traffic over HTTPS using self-signed SSL certificates.
 * 🔐 **Environment Configuration**: Secrets and config loaded securely using `.env` and `python-dotenv`.
 
 ---
@@ -28,8 +29,10 @@ docker-compose up --build
 The app will be accessible at:
 
 ```
-http://localhost
+https://localhost
 ```
+
+> ⚠️ You may need to accept the security warning in your browser due to the self-signed SSL certificate.
 
 NGINX will route requests to one of the 3 FastAPI instances running behind it.
 
@@ -46,6 +49,7 @@ NGINX will route requests to one of the 3 FastAPI instances running behind it.
 * Passlib (bcrypt)
 * Python-Dotenv
 * Docker + Docker Compose
-* NGINX (as reverse proxy + load balancer)
+* NGINX (as reverse proxy + load balancer with SSL)
 
 ---
+
