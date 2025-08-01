@@ -32,3 +32,6 @@ Thumbs.db
 
 # Ignore local MongoDB volume if mapped
 mongo_data/
+
+# Ignore certs file
+certs/
