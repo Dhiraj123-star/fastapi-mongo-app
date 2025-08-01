@@ -1,5 +1,4 @@
 
-
 # 🚀 FastAPI Mongo Starter
 
 A minimal FastAPI application powered by **MongoDB** and **Valkey (Redis-compatible cache)**, secured with **JWT authentication**, containerized with **Docker**, and orchestrated using **Docker Compose**.
@@ -15,6 +14,7 @@ A minimal FastAPI application powered by **MongoDB** and **Valkey (Redis-compati
 * 🧩 **Async I/O**: Fully asynchronous using `motor` (MongoDB async driver) and `redis.asyncio` for cache.
 * 📦 **Containerized**: FastAPI, MongoDB, and Valkey run in isolated containers.
 * 🔧 **Service Orchestration**: Docker Compose handles setup, networking, and service orchestration automatically.
+* 📡 **NGINX Load Balancer**: Routes and balances traffic across 3 FastAPI instances using round-robin strategy.
 * 🔐 **Environment Configuration**: Secrets and config loaded securely using `.env` and `python-dotenv`.
 
 ---
@@ -24,6 +24,14 @@ A minimal FastAPI application powered by **MongoDB** and **Valkey (Redis-compati
 ```bash
 docker-compose up --build
 ```
+
+The app will be accessible at:
+
+```
+http://localhost
+```
+
+NGINX will route requests to one of the 3 FastAPI instances running behind it.
 
 ---
 
@@ -38,5 +46,6 @@ docker-compose up --build
 * Passlib (bcrypt)
 * Python-Dotenv
 * Docker + Docker Compose
+* NGINX (as reverse proxy + load balancer)
 
 ---
