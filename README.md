@@ -1,7 +1,7 @@
 
 # 🚀 FastAPI Mongo Starter
 
-A minimal FastAPI application powered by **MongoDB** and **Valkey (Redis-compatible cache)**, secured with **JWT authentication**, containerized with **Docker**, and orchestrated using **Docker Compose**.
+A minimal FastAPI application powered by **MongoDB** and **Valkey (Redis-compatible cache)**, secured with **JWT authentication**, containerized with **Docker**, and orchestrated using **Docker Compose**. It also supports **CI/CD pipelines** via GitHub Actions for seamless Docker image builds and deployments.
 
 ---
 
@@ -16,11 +16,11 @@ A minimal FastAPI application powered by **MongoDB** and **Valkey (Redis-compati
 * 🔧 **Service Orchestration**: Docker Compose handles setup, networking, and service orchestration automatically.
 * 📡 **NGINX Load Balancer**: Routes and balances traffic across 3 FastAPI instances using round-robin strategy.
 * 🔒 **Self-Signed SSL (HTTPS)**: NGINX serves traffic over HTTPS using self-signed SSL certificates.
-* 🔐 **Environment Configuration**: Secrets and config loaded securely using `.env` and `python-dotenv`.
+* 🚫 **No `.env` Required for CI/CD**: GitHub Actions sets sensitive variables directly during build—no `.env` file dependency for Docker image creation.
 
 ---
 
-## 🐳 Run the App
+## 🐳 Run the App Locally
 
 ```bash
 docker-compose up --build
@@ -47,9 +47,10 @@ NGINX will route requests to one of the 3 FastAPI instances running behind it.
 * redis-py (async Valkey/Redis client)
 * Python-Jose (JWT)
 * Passlib (bcrypt)
-* Python-Dotenv
+* Python-Dotenv *(only for local development)*
 * Docker + Docker Compose
 * NGINX (as reverse proxy + load balancer with SSL)
+* GitHub Actions (CI/CD pipeline for Docker builds)
 
 ---
 
